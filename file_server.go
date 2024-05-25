@@ -3,7 +3,7 @@ package main
 import (
     "fmt"
     "flag"
-    //"net/http"
+    "net/http"
 )
 
 func main() {
@@ -13,7 +13,7 @@ func main() {
     flag.StringVar(&local_path, "path", "/data/", "local path to serve")
     flag.Parse()
     fmt.Printf("Listening on port=%d path=%s\n", port, local_path)
-    //http.Handle("/", http.FileServer(http.Dir(local_path)))
+    http.Handle("/", http.FileServer(http.Dir(local_path)))
     //fmt.Printf("Listening on port=%d path=%s", port, local_path)
-    //http.ListenAndServe(fmt.Sprintf(":%d", port), nil)
+    http.ListenAndServe(fmt.Sprintf(":%d", port), nil)
 }
